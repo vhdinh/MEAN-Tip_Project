@@ -45,14 +45,16 @@ Tip_app.controller('LoginController', function($scope,$http,$location, LoginFact
     }
 
 
+
     $scope.logout = function(){
         $scope.user = {}
         $location.url('/login')
     }
 
     $scope.happyPrice = function(){
-            var audio = new Audio('rich1.mp3');
-            audio.play();
+            ranran = Math.floor((Math.random() * 4) + 1);
+            audio = new Audio("rich"+ ranran+ ".mp3");
+            audio.play()
             $scope.user = LoginFactory.getUser()
             var goodTip = Math.random() * (0.10) + 0.15
             var total =  1 + goodTip

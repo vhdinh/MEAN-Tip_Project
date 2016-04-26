@@ -13,6 +13,7 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
         $location.url('/login')
     }
 
+
    
 // get location
     $.getJSON("http://ip-api.com/json/?callback=?", function(data) {
@@ -24,6 +25,9 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
 
 
     $scope.happyPrice = function(){
+            ranran = Math.floor((Math.random() * 4) + 1);
+            audio = new Audio("rich"+ ranran+ ".mp3");
+            audio.play()
             $scope.user = LoginFactory.getUser()
             var goodTip = Math.random() * (0.10) + 0.15
             var total =  1 + goodTip
