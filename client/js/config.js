@@ -58,7 +58,7 @@ Tip_app.config(function($routeProvider) {
 			templateUrl: '/static/partials/personal/barber.html',
 			controller: "PersonalController"
 		})
-		.when('/mani', {
+		.when('/manicure', {
 			templateUrl: '/static/partials/personal/mani.html',
 			controller: "PersonalController"
 		})
