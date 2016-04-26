@@ -1,0 +1,102 @@
+<div ng-controller="UserController" class="mainView">
+	<nav class="navbar navbar-default navbar-inverse">
+	  <div class="container-fluid">
+	    
+	      <p class="navbar-brand">
+	      	Hi {{user.firstname}}
+	      </p>
+	   
+	    
+	      <ul class="nav navbar-nav navbar-right righty">
+	        <li><a href="" ng-click="logout(user)">Logout</a></li>
+
+	      </ul>
+	  </div><!-- /.container-fluid -->
+	</nav>
+
+
+
+	<div class="PageContent">
+
+		<h3>
+
+			<a href="#/main">Main</a>  |  
+			<div class="dropdown">
+				  <a class="dropdown-toggle" data-toggle="dropdown">Food
+				  <span class="caret"></span></a>
+				  <ul class="dropdown-menu">
+				    <li><a href="#/barista">Barista</a></li>
+				    <li><a href="#/bartender">Bartender</a></li>
+				    <li><a href="#/delivery">Delivery</a></li>
+				    <li><a href="#/takeout">TakeOut</a></li>
+				  </ul>
+			</div>  |  
+			<div class="dropdown">
+				  <a class="dropdown-toggle" data-toggle="dropdown">Hotel
+				  <span class="caret"></span></a>
+				  <ul class="dropdown-menu">
+				    <li><a href="#/bellman">Bellman</a></li>
+				    <li><a href="#/concierge">Concierge</a></li>
+				    <li><a href="#/housekeeping">Housekeeping</a></li>
+				    <li><a href="#/valet">Valet</a></li>
+				    <li><a href="#/roomService">Room Service</a></li>
+
+				  </ul>
+			</div>  | 
+			<div class="dropdown">
+				  <a class="dropdown-toggle" data-toggle="dropdown">Travel
+				  <span class="caret"></span></a>
+				  <ul class="dropdown-menu">
+				    <li><a href="#/bus">Bus</a></li>
+				    <li><a href="#/cab">Cab</a></li>
+				    <li><a href="#/chaffeur">Chauffeur</a></li>
+				    <li><a href="#/gas">Gas</a></li>
+				  </ul>
+			</div>  | 
+			<div class="dropdown">
+				  <a class="dropdown-toggle" data-toggle="dropdown">Personal
+				  <span class="caret"></span></a>
+				  <ul class="dropdown-menu">
+				    <li><a href="#/barber">Barber</a></li>
+				    <li><a href="#/manicure">Mani</a></li>
+				    <li><a href="#/spa">Spa</a></li>
+				    <li><a href="#/massage">Massage</a></li>
+				    <li><a href="#/shoe">Shoe-shine</a></li>
+
+				  </ul>
+			</div>
+ 
+		</h3>
+
+		<form>
+			<input type="text" placeholder="Filter" ng-model="filtering">
+		</form>
+
+		<table class="table table-hover table-border">
+			<thead>
+				<tr>
+					<th>Service</th>
+					<th>Location</th>
+					<th>Mood</th>
+					<th>Price</th>
+					<th>Tip</th>
+					<th>Total</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="tip in tips | orderBy: '-createdAt' | filter: filtering" ng-if="tip._user._id == user._id">
+					<td ng-bind="tip.service"></td>
+					<td ng-bind="tip.location"></td>
+					<td ng-bind="tip.mood"></td>
+					<td>${{tip.price}}</td>
+					<td>{{tip.tipPercent | number: 2}}%</td>
+					<td>${{tip.total | number: 2}}</td>
+					<td><a href="" ng-click="remove_Tip(tip)">Remove</a></td>
+
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+</div>

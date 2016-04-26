@@ -1,0 +1,44 @@
+.icon {
+	width: 40px;
+	margin: 0px 5px;
+}
+
+.outcome {
+	visibility: visible;
+ß}
+
+.outcome p {
+	margin: 25px;
+}
+
+
+.outcome .Topic {
+	color: blue;
+	width: 200px;
+	display: inline-block;
+}
+
+.PageContent {
+	margin: 50px;
+	text-align: center;
+}
+
+.PageContent h3 a {
+	margin: 0px 5px;
+}
+
+.tipping {
+	margin-top: 25px;
+}
+
+.righty {
+	float: right;
+}
+
+.dropdown {
+	display: inline-block;
+}
+
+table thead tr th {
+	text-align: center;
+}
