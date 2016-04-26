@@ -51,7 +51,7 @@ Tip_app.controller('LoginController', function($scope,$http,$location, LoginFact
     }
 
     $scope.happyPrice = function(){
-            var audio = new Audio('money.mp3');
+            var audio = new Audio('rich1.mp3');
             audio.play();
             $scope.user = LoginFactory.getUser()
             var goodTip = Math.random() * (0.10) + 0.15
