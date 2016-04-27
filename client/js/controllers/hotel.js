@@ -35,6 +35,8 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
             $scope.price.show = $scope.price.price
             $scope.price.tip = goodTip
             $scope.price.tipPercent = goodTip * 100
+            $scope.price.tipAmount = goodTip * $scope.price.price
+
             $scope.price.total = total
             $scope.price.totalPrice = totalPrice
             curr_us = {
@@ -58,6 +60,8 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
             $scope.price.show = $scope.price.price
             $scope.price.tip = goodTip
             $scope.price.tipPercent = goodTip * 100
+            $scope.price.tipAmount = goodTip * $scope.price.price
+
             $scope.price.total = total
             $scope.price.totalPrice = totalPrice
             curr_us = {
@@ -82,6 +86,8 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
             $scope.price.show = $scope.price.price
             $scope.price.tip = goodTip
             $scope.price.tipPercent = goodTip * 100
+            $scope.price.tipAmount = goodTip * $scope.price.price
+
             $scope.price.total = total
             $scope.price.totalPrice = totalPrice
             curr_us = {
@@ -107,6 +113,8 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
             $scope.price.show = $scope.price.price
             $scope.price.tip = goodTip
             $scope.price.tipPercent = goodTip * 100
+            $scope.price.tipAmount = goodTip * $scope.price.price
+
             $scope.price.total = total
             $scope.price.totalPrice = totalPrice
             curr_us = {
@@ -134,6 +142,8 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
             $scope.price.show = $scope.price.price
             $scope.price.tip = goodTip
             $scope.price.tipPercent = goodTip * 100
+            $scope.price.tipAmount = goodTip * $scope.price.price
+
             $scope.price.total = total
             $scope.price.totalPrice = totalPrice
             curr_us = {
@@ -160,6 +170,8 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
         $scope.price.show = $scope.price.price;
         $scope.price.tip = badTip
         $scope.price.tipPercent = badTip * 100;
+        $scope.price.tipAmount = badTip * $scope.price.price
+
         $scope.price.total = total
         $scope.price.totalPrice = totalPrice
         curr_us = {
@@ -183,6 +195,8 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
         $scope.price.show = $scope.price.price;
         $scope.price.tip = badTip
         $scope.price.tipPercent = badTip * 100;
+        $scope.price.tipAmount = badTip * $scope.price.price
+
         $scope.price.total = total
         $scope.price.totalPrice = totalPrice
         curr_us = {
@@ -190,7 +204,7 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
         }
         $scope.price.user = curr_us
         $scope.price.location = $scope.locate
-        $scope.price.service = "Bartender"
+        $scope.price.service = "Concierge"
         $scope.price.mood = "Bad"
         TipFactory.sadPrice($scope.price, function(output){
             $scope.prices = output
@@ -206,6 +220,8 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
         $scope.price.show = $scope.price.price;
         $scope.price.tip = badTip
         $scope.price.tipPercent = badTip * 100;
+        $scope.price.tipAmount = badTip * $scope.price.price
+
         $scope.price.total = total
         $scope.price.totalPrice = totalPrice
         curr_us = {
@@ -229,6 +245,8 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
         $scope.price.show = $scope.price.price;
         $scope.price.tip = badTip
         $scope.price.tipPercent = badTip * 100;
+        $scope.price.tipAmount = badTip * $scope.price.price
+
         $scope.price.total = total
         $scope.price.totalPrice = totalPrice
         curr_us = {
@@ -252,6 +270,8 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
         $scope.price.show = $scope.price.price;
         $scope.price.tip = badTip
         $scope.price.tipPercent = badTip * 100;
+        $scope.price.tipAmount = badTip * $scope.price.price
+
         $scope.price.total = total
         $scope.price.totalPrice = totalPrice
         curr_us = {
@@ -276,6 +296,8 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
         $scope.price.show = $scope.price.price;
         $scope.price.tip = randomTip;
         $scope.price.tipPercent = randomTip * 100;
+        $scope.price.tipAmount = randomTip * $scope.price.price
+
         $scope.price.total = total;
         $scope.price.totalPrice = totalPrice
         curr_us = {
@@ -300,6 +322,8 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
         $scope.price.show = $scope.price.price;
         $scope.price.tip = randomTip;
         $scope.price.tipPercent = randomTip * 100;
+        $scope.price.tipAmount = randomTip * $scope.price.price
+
         $scope.price.total = total;
         $scope.price.totalPrice = totalPrice
         curr_us = {
@@ -307,7 +331,7 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
         }
         $scope.price.user = curr_us
         $scope.price.location = $scope.locate
-        $scope.price.service = "Bartender"
+        $scope.price.service = "Concierge"
         $scope.price.mood = "Don't Care"
         TipFactory.dontCare($scope.price, function(output){
             $scope.prices = output
@@ -324,6 +348,8 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
         $scope.price.show = $scope.price.price;
         $scope.price.tip = randomTip;
         $scope.price.tipPercent = randomTip * 100;
+        $scope.price.tipAmount = randomTip * $scope.price.price
+
         $scope.price.total = total;
         $scope.price.totalPrice = totalPrice
         curr_us = {
@@ -331,7 +357,7 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
         }
         $scope.price.user = curr_us
         $scope.price.location = $scope.locate
-        $scope.price.service = "Delivery"
+        $scope.price.service = "Housekeeping"
         $scope.price.mood = "Don't Care"
         TipFactory.dontCare($scope.price, function(output){
             $scope.prices = output
@@ -348,6 +374,8 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
         $scope.price.show = $scope.price.price;
         $scope.price.tip = randomTip;
         $scope.price.tipPercent = randomTip * 100;
+        $scope.price.tipAmount = randomTip * $scope.price.price
+
         $scope.price.total = total;
         $scope.price.totalPrice = totalPrice
         curr_us = {
@@ -372,6 +400,8 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
         $scope.price.show = $scope.price.price;
         $scope.price.tip = randomTip;
         $scope.price.tipPercent = randomTip * 100;
+        $scope.price.tipAmount = randomTip * $scope.price.price
+
         $scope.price.total = total;
         $scope.price.totalPrice = totalPrice
         curr_us = {

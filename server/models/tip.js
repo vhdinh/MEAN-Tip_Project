@@ -8,6 +8,7 @@ var TipSchema = new mongoose.Schema({
     price: {type: String},
     tip: {type: String},
     tipPercent: {type: String},
+    tipAmount : {type: String},
     total: {type: String},
     service: {type: String},
     mood: {type: String},

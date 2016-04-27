@@ -75,22 +75,31 @@
 		<table class="table table-hover table-border">
 			<thead>
 				<tr>
-					<th>Service</th>
-					<th>Location</th>
-					<th>Mood</th>
-					<th>Price</th>
-					<th>Tip</th>
-					<th>Total</th>
+					<th><button ng-click="order('service')">Service</button>
+						<span class="sortorder" ng-show="predicate === 'service'" ng-class="{reverse:reverse}"></span></th>
+    				<th><button ng-click="order('location')">Location</button>
+						<span class="sortorder" ng-show="predicate === 'location'" ng-class="{reverse:reverse}"></span></th>
+					<th><button ng-click="order('mood')">Mood</button>
+						<span class="sortorder" ng-show="predicate === 'mood'" ng-class="{reverse:reverse}"></span></th>
+    				<th><button ng-click="order('price')">Bill</button>
+						<span class="sortorder" ng-show="predicate === 'price'" ng-class="{reverse:reverse}"></span></th>
+					<th><button ng-click="order('tip')">Tip</button>
+						<span class="sortorder" ng-show="predicate === 'tip'" ng-class="{reverse:reverse}"></span></th>
+					<th><button ng-click="order('tipAmount')">Tip Amount</button>
+						<span class="sortorder" ng-show="predicate === 'tipAmount'" ng-class="{reverse:reverse}"></span></th>
+    				<th><button ng-click="order('total')">Total Bill</button>
+						<span class="sortorder" ng-show="predicate === 'total'" ng-class="{reverse:reverse}"></span></th>
 					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="tip in tips | orderBy: '-createdAt' | filter: filtering" ng-if="tip._user._id == user._id">
+				<tr ng-repeat="tip in tips | orderBy:predicate:reverse | filter: filtering" ng-if="tip._user._id == user._id">
 					<td ng-bind="tip.service"></td>
 					<td ng-bind="tip.location"></td>
 					<td ng-bind="tip.mood"></td>
 					<td>${{tip.price}}</td>
 					<td>{{tip.tipPercent | number: 2}}%</td>
+					<td>${{tip.tipAmount | number: 2}}</td>
 					<td>${{tip.total | number: 2}}</td>
 					<td><a href="" ng-click="remove_Tip(tip)">Remove</a></td>
 

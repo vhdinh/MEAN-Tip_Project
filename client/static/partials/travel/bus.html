@@ -1,1 +1,119 @@
-bus.html
+<div ng-controller="TravelController" class="busView">
+	<nav class="navbar navbar-default navbar-inverse">
+	  <div class="container-fluid">
+	    
+	      <p class="navbar-brand">
+	      	Hi {{user.firstname}}
+	      	
+	      </p>
+
+
+	    
+	      <ul class="nav navbar-nav navbar-right righty">
+	      	<li><a href="#/user">Account</a></li>
+	        <li><a href="" ng-click="logout(user)">Logout</a></li>
+
+	      </ul>
+	  </div><!-- /.container-fluid -->
+	</nav>
+
+
+	<div class="PageContent">
+	
+		<h3>
+
+			<a href="#/main">Main</a>  |  
+			<div class="dropdown">
+				  <a class="dropdown-toggle" data-toggle="dropdown">Food
+				  <span class="caret"></span></a>
+				  <ul class="dropdown-menu">
+				    <li><a href="#/barista">Barista</a></li>
+				    <li><a href="#/bartender">Bartender</a></li>
+				    <li><a href="#/delivery">Delivery</a></li>
+				    <li><a href="#/takeout">TakeOut</a></li>
+				  </ul>
+			</div>  |  
+			<div class="dropdown">
+				  <a class="dropdown-toggle" data-toggle="dropdown">Hotel
+				  <span class="caret"></span></a>
+				  <ul class="dropdown-menu">
+				    <li><a href="#/bellman">Bellman</a></li>
+				    <li><a href="#/concierge">Concierge</a></li>
+				    <li><a href="#/housekeeping">Housekeeping</a></li>
+				    <li><a href="#/valet">Valet</a></li>
+				    <li><a href="#/roomService">Room Service</a></li>
+
+				  </ul>
+			</div>  | 
+			<div class="dropdown">
+				  <a class="dropdown-toggle" data-toggle="dropdown">Travel
+				  <span class="caret"></span></a>
+				  <ul class="dropdown-menu">
+				    <li><a href="#/bus">Bus</a></li>
+				    <li><a href="#/cab">Cab</a></li>
+				    <li><a href="#/chauffeur">Chauffeur</a></li>
+				    <li><a href="#/gas">Gas</a></li>
+				  </ul>
+			</div>  | 
+			<div class="dropdown">
+				  <a class="dropdown-toggle" data-toggle="dropdown">Personal
+				  <span class="caret"></span></a>
+				  <ul class="dropdown-menu">
+				    <li><a href="#/barber">Barber</a></li>
+				    <li><a href="#/manicure">Mani</a></li>
+				    <li><a href="#/spa">Spa</a></li>
+				    <li><a href="#/massage">Massage</a></li>
+				    <li><a href="#/shoe">Shoe-shine</a></li>
+
+				  </ul>
+			</div>
+
+ 
+		</h3>
+
+
+		<div class="tipping">
+			<h4>Bus(not mass transit) - Recommendations</h4>
+			<p class="recom">$1 - $2</p>
+
+
+			<div>
+				<form class="priceInput">
+					<input type="number" step="0.01" min="0" ng-model="price.price" placeholder="Bill">
+					<br>
+					<br>
+					<input title="Good Tippa" type="image" src="/static/happy.png" class="icon" ng-click="happyPrice_bus(); showme=true" >
+					<input title="Bad Tippa" type="image" src="/static/sad.png", class="icon" ng-click="sadPrice_bus(); showme=true">
+					<input title="Dont Care" type="image" src="/static/dontcare.png", class="icon" ng-click="dontCarePrice_bus(); showme=true">
+				</form>
+			</div>
+			<div class="outcome" ng-show="showme">
+					
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Bill</th>
+							<th>Tip</th>
+							<th>Tip Amount</th>
+							<th>Total Bill</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>${{price.show | number}}</td>
+							<td>{{price.tipPercent | number: 2}}%</td>
+							<td>${{price.tipAmount | number: 2}}</td>
+							<td>${{price.totalPrice | number: 2}}</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+
+		</div>
+
+	</div>
+
+		<script type="text/javascript" src="js/script.js"></script>
+
+</div>

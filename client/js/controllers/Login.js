@@ -62,6 +62,7 @@ Tip_app.controller('LoginController', function($scope,$http,$location, LoginFact
             $scope.price.show = $scope.price.price
             $scope.price.tip = goodTip
             $scope.price.tipPercent = goodTip * 100
+            $scope.price.tipAmount = goodTip * $scope.price.price
             $scope.price.total = total
             $scope.price.totalPrice = totalPrice
             curr_us = {
@@ -92,6 +93,8 @@ Tip_app.controller('LoginController', function($scope,$http,$location, LoginFact
         $scope.price.show = $scope.price.price;
         $scope.price.tip = badTip
         $scope.price.tipPercent = badTip * 100;
+        $scope.price.tipAmount = badTip * $scope.price.price
+
         $scope.price.total = total
         $scope.price.totalPrice = totalPrice
         curr_us = {
@@ -117,6 +120,8 @@ Tip_app.controller('LoginController', function($scope,$http,$location, LoginFact
         $scope.price.show = $scope.price.price;
         $scope.price.tip = randomTip;
         $scope.price.tipPercent = randomTip * 100;
+        $scope.price.tipAmount = randomTip * $scope.price.price
+
         $scope.price.total = total;
         $scope.price.totalPrice = totalPrice
         curr_us = {

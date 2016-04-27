@@ -4,7 +4,9 @@
 	    
 	      <p class="navbar-brand">
 	      	Hi {{user.firstname}}
+	      	
 	      </p>
+
 
 	    
 	      <ul class="nav navbar-nav navbar-right righty">
@@ -16,9 +18,8 @@
 	</nav>
 
 
-
 	<div class="PageContent">
-
+	
 		<h3>
 
 			<a href="#/main">Main</a>  |  
@@ -88,15 +89,17 @@
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th>Price</th>
+							<th>Bill</th>
 							<th>Tip</th>
-							<th>Total</th>
+							<th>Tip Amount</th>
+							<th>Total Bill</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td>${{price.show | number}}</td>
 							<td>{{price.tipPercent | number: 2}}%</td>
+							<td>${{price.tipAmount | number: 2}}</td>
 							<td>${{price.totalPrice | number: 2}}</td>
 						</tr>
 					</tbody>

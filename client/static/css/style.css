@@ -42,3 +42,17 @@
 table thead tr th {
 	text-align: center;
 }
+
+	table th button {
+		border: none;
+		font-size: 1em;
+		background-color: white;	
+
+	}
+
+.sortorder:after {
+  content: '\25b2';
+}
+.sortorder.reverse:after {
+  content: '\25bc';
+}
