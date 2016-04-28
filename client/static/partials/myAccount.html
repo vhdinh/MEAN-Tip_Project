@@ -8,7 +8,7 @@
 	   
 	    
 	      <ul class="nav navbar-nav navbar-right righty">
-	        <li><a href="" ng-click="logout(user)">Logout</a></li>
+	        <li><a href="" ng-click="logout()">Logout</a></li>
 
 	      </ul>
 	  </div><!-- /.container-fluid -->
@@ -79,6 +79,8 @@
 						<span class="sortorder" ng-show="predicate === 'service'" ng-class="{reverse:reverse}"></span></th>
     				<th><button ng-click="order('location')">Location</button>
 						<span class="sortorder" ng-show="predicate === 'location'" ng-class="{reverse:reverse}"></span></th>
+					<th><button ng-click="order('createdAt')">Date</button>
+						<span class="sortorder" ng-show="predicate === 'createdAt'" ng-class="{reverse:reverse}"></span></th>
 					<th><button ng-click="order('mood')">Mood</button>
 						<span class="sortorder" ng-show="predicate === 'mood'" ng-class="{reverse:reverse}"></span></th>
     				<th><button ng-click="order('price')">Bill</button>
@@ -93,9 +95,10 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="tip in tips | orderBy:predicate:reverse | filter: filtering" ng-if="tip._user._id == user._id">
+				<tr ng-repeat="tip in tips | orderBy:predicate:reverse | filter: filtering | limitTo: displayNum" ng-if="tip._user._id == user._id">
 					<td ng-bind="tip.service"></td>
 					<td ng-bind="tip.location"></td>
+					<td ng-bind="tip.createdAt | date:'MMM dd yyyy h:m:ss a'"></td>
 					<td ng-bind="tip.mood"></td>
 					<td>${{tip.price}}</td>
 					<td>{{tip.tipPercent | number: 2}}%</td>
@@ -106,6 +109,6 @@
 				</tr>
 			</tbody>
 		</table>
-
+		<a href="" ng-click="increaseBy(5)">Show More</a> | <a href="" ng-click="decreaseBy(5)">Show Less</a>
 	</div>
 </div>

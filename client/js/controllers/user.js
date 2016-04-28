@@ -1,14 +1,11 @@
 
 Tip_app.controller('UserController', function($scope,$http,$location, $routeParams, LoginFactory,TipFactory) {
-    $scope.locate;
-    $scope.alert = "";
-    console.log("SCOPE ALERT  - ", $scope.alert)
-    $scope.user = LoginFactory.getUser()
-    console.log("SCORE USER", $scope.user)
-    if(jQuery.isEmptyObject($scope.user)){
-        $location.url('/login')
-    }
+    
+    $scope.user = LoginFactory.user
 
+    $scope.logout = function(){
+        LoginFactory.logout()
+    }
 
     TipFactory.getTips($scope.user, function(data){
     	$scope.tips = data
@@ -22,15 +19,20 @@ Tip_app.controller('UserController', function($scope,$http,$location, $routePara
         })
     }
 
-    $scope.logout = function(){
-        $scope.user = {}
-        $location.url('/login')
+
+    $scope.displayNum = 10;
+    $scope.increaseBy = function(num){
+        $scope.displayNum +=num
+    }
+    $scope.decreaseBy = function(num){
+        if($scope.displayNum >= 10){
+            $scope.displayNum -=num
+        }
     }
 
-
         // sorting
-        $scope.predicate = 'name';
-        $scope.reverse = false;
+        $scope.predicate = 'createdAt';
+        $scope.reverse = true;
         $scope.order = function(predicate) {
             $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
             $scope.predicate = predicate;

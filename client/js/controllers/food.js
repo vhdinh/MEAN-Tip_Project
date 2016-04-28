@@ -1,19 +1,16 @@
 Tip_app.controller('FoodController', function($scope,$http,$location, LoginFactory, TipFactory) {
 
-    $scope.alert = "";
-    // console.log("SCOPE ALERT  - ", $scope.alert)
-    $scope.user = LoginFactory.getUser()
-    // console.log("SCORE USER", $scope.user)
-    if(jQuery.isEmptyObject($scope.user)){
+    $scope.user = LoginFactory.user
+
+    console.log("LOGIN FACTORY USER", LoginFactory.user)
+    if(!LoginFactory.user){
         $location.url('/login')
     }
+
 
     $scope.logout = function(){
-        $scope.user = {}
-        $location.url('/login')
+        LoginFactory.logout()
     }
-
-
    
 // get location
     $.getJSON("http://ip-api.com/json/?callback=?", function(data) {
@@ -23,12 +20,13 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
          $scope.locate = data.city
     })
 
+    play_audio = function(){
+        var ranran = Math.floor((Math.random() * 3) + 1);
+        var audio = new Audio("rich"+ ranran+ ".mp3");
+            audio.play()
+    }
 
     $scope.happyPrice = function(){
-            ranran = Math.floor((Math.random() * 4) + 1);
-            audio = new Audio("rich"+ ranran+ ".mp3");
-            audio.play()
-            $scope.user = LoginFactory.getUser()
             var goodTip = Math.random() * (0.10) + 0.15
             var total =  1 + goodTip
             var totalPrice = $scope.price.price * total
@@ -36,7 +34,6 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
             $scope.price.tip = goodTip
             $scope.price.tipPercent = goodTip * 100
             $scope.price.tipAmount = goodTip * $scope.price.price
-
             $scope.price.total = total
             $scope.price.totalPrice = totalPrice
             curr_us = {
@@ -46,14 +43,12 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
             $scope.price.location = $scope.locate
             $scope.price.service = "Barista"
             $scope.price.mood = "Good"
-
             TipFactory.happyPrice($scope.price, function(output){
                 $scope.prices = output
-                // $scope.price = {}
+                play_audio()
             })   
     }
     $scope.happyPrice_bar = function(){
-            $scope.user = LoginFactory.getUser()
             var goodTip = Math.random() * (0.10) + 0.15
             var total =  1 + goodTip
             var totalPrice = $scope.price.price * total
@@ -61,7 +56,6 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
             $scope.price.tip = goodTip
             $scope.price.tipPercent = goodTip * 100
             $scope.price.tipAmount = goodTip * $scope.price.price
-
             $scope.price.total = total
             $scope.price.totalPrice = totalPrice
             curr_us = {
@@ -71,15 +65,13 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
             $scope.price.location = $scope.locate
             $scope.price.service = "Bartender"
             $scope.price.mood = "Good"
-
             TipFactory.happyPrice($scope.price, function(output){
                 $scope.prices = output
-                // $scope.price = {}
+                play_audio()
             })   
     }
 
     $scope.happyPrice_deliver = function(){
-            $scope.user = LoginFactory.getUser()
             var goodTip = Math.random() * (0.10) + 0.15
             var total =  1 + goodTip
             var totalPrice = $scope.price.price * total
@@ -87,7 +79,6 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
             $scope.price.tip = goodTip
             $scope.price.tipPercent = goodTip * 100
             $scope.price.tipAmount = goodTip * $scope.price.price
-
             $scope.price.total = total
             $scope.price.totalPrice = totalPrice
             curr_us = {
@@ -97,16 +88,14 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
             $scope.price.location = $scope.locate
             $scope.price.service = "Delivery"
             $scope.price.mood = "Good"
-
             TipFactory.happyPrice($scope.price, function(output){
                 $scope.prices = output
-                // $scope.price = {}
+                play_audio()
             })   
     }
 
 
     $scope.happyPrice_takeout = function(){
-            $scope.user = LoginFactory.getUser()
             var goodTip = Math.random() * (0.10) + 0.15
             var total =  1 + goodTip
             var totalPrice = $scope.price.price * total
@@ -124,16 +113,14 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
             $scope.price.location = $scope.locate
             $scope.price.service = "Takeout"
             $scope.price.mood = "Good"
-
             TipFactory.happyPrice($scope.price, function(output){
                 $scope.prices = output
-                // $scope.price = {}
+                play_audio()
             })   
     }
 
 
     $scope.sadPrice = function(){
-        $scope.user = LoginFactory.getUser()
         var badTip = Math.random() * (0.10) + 0.05;
         var total = 1 + badTip
         console.log("total", total)
@@ -142,7 +129,6 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
         $scope.price.tip = badTip
         $scope.price.tipPercent = badTip * 100;
         $scope.price.tipAmount = badTip * $scope.price.price
-
         $scope.price.total = total
         $scope.price.totalPrice = totalPrice
         curr_us = {
@@ -158,7 +144,6 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
     }
 
     $scope.sadPrice_bar = function(){
-        $scope.user = LoginFactory.getUser()
         var badTip = Math.random() * (0.10) + 0.05;
         var total = 1 + badTip
         console.log("total", total)
@@ -167,7 +152,6 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
         $scope.price.tip = badTip
         $scope.price.tipPercent = badTip * 100;
         $scope.price.tipAmount = badTip * $scope.price.price
-
         $scope.price.total = total
         $scope.price.totalPrice = totalPrice
         curr_us = {
@@ -183,7 +167,6 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
     }
 
     $scope.sadPrice_deliver = function(){
-        $scope.user = LoginFactory.getUser()
         var badTip = Math.random() * (0.10) + 0.05;
         var total = 1 + badTip
         console.log("total", total)
@@ -192,7 +175,6 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
         $scope.price.tip = badTip
         $scope.price.tipPercent = badTip * 100;
         $scope.price.tipAmount = badTip * $scope.price.price
-
         $scope.price.total = total
         $scope.price.totalPrice = totalPrice
         curr_us = {
@@ -208,7 +190,6 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
     }
 
     $scope.sadPrice_takeout = function(){
-        $scope.user = LoginFactory.getUser()
         var badTip = Math.random() * (0.10) + 0.05;
         var total = 1 + badTip
         console.log("total", total)
@@ -217,7 +198,6 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
         $scope.price.tip = badTip
         $scope.price.tipPercent = badTip * 100;
         $scope.price.tipAmount = badTip * $scope.price.price
-
         $scope.price.total = total
         $scope.price.totalPrice = totalPrice
         curr_us = {
@@ -233,8 +213,6 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
     }
 
     $scope.dontCarePrice = function(){
-        $scope.user = LoginFactory.getUser()
-        // console.log("DontCare Price = ", $scope.price)
         var randomTip = Math.random() * (0.20) + 0.05;
         var total = 1 + randomTip;
         var totalPrice = $scope.price.price * total;
@@ -242,7 +220,6 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
         $scope.price.tip = randomTip;
         $scope.price.tipPercent = randomTip * 100;
         $scope.price.tipAmount = randomTip * $scope.price.price
-
         $scope.price.total = total;
         $scope.price.totalPrice = totalPrice
         curr_us = {
@@ -255,12 +232,9 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
         TipFactory.dontCare($scope.price, function(output){
             $scope.prices = output
         })
-
     }
 
     $scope.dontCarePrice_bar = function(){
-        $scope.user = LoginFactory.getUser()
-        // console.log("DontCare Price = ", $scope.price)
         var randomTip = Math.random() * (0.20) + 0.05;
         var total = 1 + randomTip;
         var totalPrice = $scope.price.price * total;
@@ -268,7 +242,6 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
         $scope.price.tip = randomTip;
         $scope.price.tipPercent = randomTip * 100;
         $scope.price.tipAmount = randomTip * $scope.price.price
-
         $scope.price.total = total;
         $scope.price.totalPrice = totalPrice
         curr_us = {
@@ -281,12 +254,9 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
         TipFactory.dontCare($scope.price, function(output){
             $scope.prices = output
         })
-
     }
 
     $scope.dontCarePrice_deliver = function(){
-        $scope.user = LoginFactory.getUser()
-        // console.log("DontCare Price = ", $scope.price)
         var randomTip = Math.random() * (0.20) + 0.05;
         var total = 1 + randomTip;
         var totalPrice = $scope.price.price * total;
@@ -294,7 +264,6 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
         $scope.price.tip = randomTip;
         $scope.price.tipPercent = randomTip * 100;
         $scope.price.tipAmount = randomTip * $scope.price.price
-
         $scope.price.total = total;
         $scope.price.totalPrice = totalPrice
         curr_us = {
@@ -307,12 +276,9 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
         TipFactory.dontCare($scope.price, function(output){
             $scope.prices = output
         })
-
     }
 
     $scope.dontCarePrice_takeout = function(){
-        $scope.user = LoginFactory.getUser()
-        // console.log("DontCare Price = ", $scope.price)
         var randomTip = Math.random() * (0.20) + 0.05;
         var total = 1 + randomTip;
         var totalPrice = $scope.price.price * total;
@@ -320,7 +286,6 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
         $scope.price.tip = randomTip;
         $scope.price.tipPercent = randomTip * 100;
         $scope.price.tipAmount = randomTip * $scope.price.price
-
         $scope.price.total = total;
         $scope.price.totalPrice = totalPrice
         curr_us = {
@@ -333,8 +298,6 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
         TipFactory.dontCare($scope.price, function(output){
             $scope.prices = output
         })
-
     }
-
 
 });

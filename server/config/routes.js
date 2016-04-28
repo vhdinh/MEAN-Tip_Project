@@ -7,14 +7,22 @@ var tips = require("../controllers/tips.js");
 
 
 module.exports = function(app){
-	app.post('/login', passport.authenticate('local', { successRedirect: '/main',
-                                   failureRedirect: '/login',
-                                   failureFlash: true }
-	))
+
+	app.get('/', function(req, res){
+		users.index(req, res)
+	})
+
+	app.post('/login', function(req, res){
+		console.log("LOGGIN IN REQ BODY - ", req.body)
+		users.login(req,res)
+	})
+
+	app.get('/getUser', function(req, res){
+		users.getUser(req, res)
+	})
 
 	app.get('/main', function(req, res){
-		console.log("REQQQ", req.user)
-		res.json(req.user)
+		users.success(req, res)
 		
 	})
 
@@ -23,8 +31,7 @@ module.exports = function(app){
 	})
 
 	app.get('/logout', function(req, res){
-		req.logout();
-		res.redirect('/login')
+		users.destroy(req, res)
 	})
 
 

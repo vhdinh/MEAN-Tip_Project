@@ -1,8 +1,6 @@
-console.log("IN CONTROLLER USERS.JS FILE")
+console.log("IN CONTROLLER TIPS.JS FILE")
 
 var mongoose = require("mongoose");
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
 var User = mongoose.model("users")
 var Tip = mongoose.model("tips")
 
