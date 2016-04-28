@@ -1,4 +1,4 @@
-console.log("IN SERVER.JS FILE")
+// console.log("IN SERVER.JS FILE")
 
 var express = require("express");
 var session = require('express-session')

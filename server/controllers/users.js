@@ -1,4 +1,4 @@
-console.log("IN CONTROLLER USERS.JS FILE")
+// console.log("IN CONTROLLER USERS.JS FILE")
 
 var mongoose = require("mongoose");
 
@@ -25,7 +25,7 @@ module.exports = (function(){
 						res.json(err)
 					}
 					else{
-						console.log("USERESRESRSER", user)
+						// console.log("USERESRESRSER", user)
 						res.json(user)
 					}
 				})
@@ -38,10 +38,13 @@ module.exports = (function(){
 
 
 		login: function(req,res){
-			console.log("IN LOGIN SERVER CONTROLLER - ", req.body)
+			// console.log("IN LOGIN SERVER CONTROLLER - ", req.body)
 			User.find({username: req.body.username}, function(err, result){
-				if(result[0] === undefined || result[0].length == 0 || result[0].username === undefined){
-					console.log("FOUDN RESULT - ", result)
+				if(err){
+					res.json({'alert': "Unable to find username"})
+				}
+				else if(result[0] === undefined || result[0].length == 0 || result[0].username === undefined){
+					// console.log("FOUDN RESULT - ", result)
 					res.json({'alert': "Unable to find username"});
 				}
 				else{
@@ -51,9 +54,9 @@ module.exports = (function(){
 						}
 						else{
 							req.session.username = req.body.username
-							console.log("REW SESSION - ", req.session)
+							// console.log("REW SESSION - ", req.session)
 							req.session.loggedIN = "TRUE";
-							console.log("WHAT WE GETTNG BACK",result)
+							// console.log("WHAT WE GETTNG BACK",result)
 							res.json(result)
 						}
 					})
@@ -73,7 +76,7 @@ module.exports = (function(){
 
 
 		signup : function(req, res){
-			console.log("USER SERVER CONTROLLER - ", req.body.email)
+			// console.log("USER SERVER CONTROLLER - ", req.body.email)
 
 			exist = User.findOne({username: req.body.username}, function(err, user){
 				if(err){
@@ -81,7 +84,7 @@ module.exports = (function(){
 				}
 				else{
 					if(user){
-						console.log("Username already in system - ", user)
+						// console.log("Username already in system - ", user)
 						res.json({'alert': 'Username already in the system'})
 					}
 					else{
@@ -100,8 +103,8 @@ module.exports = (function(){
 								req.session.loggedIN = "TRUE";
 								req.session.name = req.body.username
 
-								console.log("LOGGING IN THIS USER SESSION - ", req.session.loggedIN)
-								console.log("ADDED A USER TO THE DB - ", user)
+								// console.log("LOGGING IN THIS USER SESSION - ", req.session.loggedIN)
+								// console.log("ADDED A USER TO THE DB - ", user)
 								res.json(user)						
 							}
 						})
@@ -113,7 +116,7 @@ module.exports = (function(){
 		destroy: function(req, res){
 			req.session.loggedIN = "FALSE";
 			req.session.username = undefined
-			console.log("REQ SESSION ", req.session.loggedIN)
+			// console.log("REQ SESSION ", req.session.loggedIN)
 			res.json(req.session.loggedIN)
 		}
 

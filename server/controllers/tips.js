@@ -1,4 +1,4 @@
-console.log("IN CONTROLLER TIPS.JS FILE")
+// console.log("IN CONTROLLER TIPS.JS FILE")
 
 var mongoose = require("mongoose");
 var User = mongoose.model("users")
@@ -7,7 +7,7 @@ var Tip = mongoose.model("tips")
 module.exports = (function(){
 	return {
 		getTips : function(req, res){
-			console.log("Getting USER ID NSDFDSDS, ", req.body)
+			// console.log("Getting USER ID NSDFDSDS, ", req.body)
 			// Tip.find({_user : req.body._id}).populate("_user").exec(function(err, tip){
 			Tip.find({}).populate("_user").exec(function(err, tip){
 
@@ -21,20 +21,20 @@ module.exports = (function(){
 		},
 
 		removeTip: function(req, res){
-			console.log("IN SERVERCONTROLLER REMOVE TIP, ",req.body)
+			// console.log("IN SERVERCONTROLLER REMOVE TIP, ",req.body)
 			Tip.remove({_id : req.body._id}, function(err){
 				if(err){
 					res.json(err)
 				}
 				else{
-					console.log("SUCcESSFULLY REMOVED TIP")
+					// console.log("SUCcESSFULLY REMOVED TIP")
 					res.redirect('/getTips')
 				}
 			})
 		},
 
 		happyPrice : function(req, res){
-			console.log("HAPPY PRICE", req.body.user)
+			// console.log("HAPPY PRICE", req.body.user)
 			new_tip = new Tip({
 				_user : req.body.user, 
 				price : req.body.price,
@@ -57,7 +57,7 @@ module.exports = (function(){
 		},
 
 		sadPrice : function(req, res){
-			console.log("Sad PRICE", req.body.user)
+			// console.log("Sad PRICE", req.body.user)
 			new_tip = new Tip({
 				_user : req.body.user, 
 				price : req.body.price,
@@ -80,7 +80,7 @@ module.exports = (function(){
 		},  
 
 		dontCare : function(req, res){
-			console.log("DONTCARE PRICE", req.body.user)
+			// console.log("DONTCARE PRICE", req.body.user)
 			new_tip = new Tip({
 				_user : req.body.user, 
 				price : req.body.price,

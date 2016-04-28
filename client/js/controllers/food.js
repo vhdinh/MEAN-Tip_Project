@@ -2,7 +2,7 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
 
     $scope.user = LoginFactory.user
 
-    console.log("LOGIN FACTORY USER", LoginFactory.user)
+    // console.log("LOGIN FACTORY USER", LoginFactory.user)
     if(!LoginFactory.user){
         $location.url('/login')
     }

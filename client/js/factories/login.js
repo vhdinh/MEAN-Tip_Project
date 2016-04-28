@@ -5,9 +5,10 @@ Tip_app.factory("LoginFactory", function($http, $location){
 	
 	factory.login = function(info, callback){
 		$http.post('/login', info).success(function(output){
+			console.log("LOGGING IN FACTORY COMING BACK", output)
 			factory.user = output[0];
 			console.log("after logging in", output[0])
-			callback(factory.user)
+			callback(output)
 		})
 	}
 

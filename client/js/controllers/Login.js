@@ -16,12 +16,16 @@ Tip_app.controller('LoginController', function($scope,$http,$location, LoginFact
         }
         else{
             LoginFactory.login(user2, function(data){
-                if('alert' in data){
-                    var name = 'alert'
-                    $scope.alert = data[name]
-                }
-                else{
-                    $location.url('/main')
+                for(key in data){
+                    if('alert' in data){
+                        var name = 'alert'
+                        // console.log("ERROR COMING BACK - ", data[name])
+                        $scope.alert = data[name]
+                        // $location.url('/login')
+                    }
+                    else{
+                        $location.url('/main')
+                    }
                 }
             }
         )}

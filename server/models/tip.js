@@ -1,4 +1,4 @@
-console.log("IN MODELS USER.JS FILE");
+// console.log("IN MODELS USER.JS FILE");
 
 var mongoose = require("mongoose");
 
