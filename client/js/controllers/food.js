@@ -21,10 +21,16 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
     })
 
     play_audio = function(){
-        var ranran = Math.floor((Math.random() * 3) + 1);
+        var ranran = Math.floor((Math.random() * 5) + 1);
         var audio = new Audio("rich"+ ranran+ ".mp3");
             audio.play()
     }
+    play_audio_sad = function(){
+        var ranran = Math.floor((Math.random() * 2) + 1);
+        var audio = new Audio("poor"+ ranran+ ".mp3");
+            audio.play()
+    }
+
 
     $scope.happyPrice = function(){
             var goodTip = Math.random() * (0.10) + 0.15
@@ -140,6 +146,7 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
         $scope.price.mood = "Bad"
         TipFactory.sadPrice($scope.price, function(output){
             $scope.prices = output
+            play_audio_sad()
         })
     }
 
@@ -163,6 +170,8 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
         $scope.price.mood = "Bad"
         TipFactory.sadPrice($scope.price, function(output){
             $scope.prices = output
+            play_audio_sad()
+
         })
     }
 
@@ -186,6 +195,8 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
         $scope.price.mood = "Bad"
         TipFactory.sadPrice($scope.price, function(output){
             $scope.prices = output
+            play_audio_sad()
+
         })
     }
 
@@ -209,6 +220,8 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
         $scope.price.mood = "Bad"
         TipFactory.sadPrice($scope.price, function(output){
             $scope.prices = output
+           play_audio_sad()
+
         })
     }
 
@@ -231,6 +244,7 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
         $scope.price.mood = "Don't Care"
         TipFactory.dontCare($scope.price, function(output){
             $scope.prices = output
+            
         })
     }
 

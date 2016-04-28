@@ -16,10 +16,16 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
     })
 
     play_audio = function(){
-        var ranran = Math.floor((Math.random() * 2) + 1);
+        var ranran = Math.floor((Math.random() * 5) + 1);
         var audio = new Audio("rich"+ ranran+ ".mp3");
             audio.play()
     }
+    play_audio_sad = function(){
+        var ranran = Math.floor((Math.random() * 2) + 1);
+        var audio = new Audio("poor"+ ranran+ ".mp3");
+            audio.play()
+    }
+
 
     $scope.happyPrice_bellman = function(){
             var goodTip = Math.random() * (0.10) + 0.15
@@ -160,6 +166,8 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
         $scope.price.mood = "Bad"
         TipFactory.sadPrice($scope.price, function(output){
             $scope.prices = output
+                        play_audio_sad()
+
         })
     }
 
@@ -183,6 +191,8 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
         $scope.price.mood = "Bad"
         TipFactory.sadPrice($scope.price, function(output){
             $scope.prices = output
+                        play_audio_sad()
+
         })
     }
 
@@ -206,6 +216,8 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
         $scope.price.mood = "Bad"
         TipFactory.sadPrice($scope.price, function(output){
             $scope.prices = output
+                        play_audio_sad()
+
         })
     }
 
@@ -229,6 +241,8 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
         $scope.price.mood = "Bad"
         TipFactory.sadPrice($scope.price, function(output){
             $scope.prices = output
+                        play_audio_sad()
+
         })
     }
 
@@ -252,6 +266,8 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
         $scope.price.mood = "Bad"
         TipFactory.sadPrice($scope.price, function(output){
             $scope.prices = output
+                        play_audio_sad()
+
         })
     }
 
@@ -275,6 +291,7 @@ Tip_app.controller('HotelController', function($scope,$http,$location, LoginFact
         $scope.price.mood = "Don't Care"
         TipFactory.dontCare($scope.price, function(output){
             $scope.prices = output
+            
         })
 
     }

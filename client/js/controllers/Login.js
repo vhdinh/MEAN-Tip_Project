@@ -39,6 +39,7 @@ Tip_app.controller('LoginController', function($scope,$http,$location, LoginFact
     $scope.signup = function(user){
         if(!user.username || !user.email || !user.firstname || !user.lastname || !user.password || !user.password2){
             $scope.alert = "All fields must be filled out!"
+            
         }
         if(user.password != user.password2){
             $scope.alert = "PASSWORD DO NOT MATCH"
@@ -66,10 +67,16 @@ Tip_app.controller('LoginController', function($scope,$http,$location, LoginFact
 
 
     play_audio = function(){
-        var ranran = Math.floor((Math.random() * 3) + 1);
+        var ranran = Math.floor((Math.random() * 5) + 1);
         var audio = new Audio("rich"+ ranran+ ".mp3");
             audio.play()
     }
+    play_audio_sad = function(){
+        var ranran = Math.floor((Math.random() * 2) + 1);
+        var audio = new Audio("poor"+ ranran+ ".mp3");
+            audio.play()
+    }
+
 
 
     $scope.happyPrice = function(){
@@ -126,6 +133,7 @@ Tip_app.controller('LoginController', function($scope,$http,$location, LoginFact
         console.log("OVERALL TOTAL: ", $scope.price)
         TipFactory.sadPrice($scope.price, function(output){
             $scope.prices = output
+            play_audio_sad()
 
         })
     }

@@ -15,8 +15,13 @@ Tip_app.controller('TravelController', function($scope,$http,$location, LoginFac
     })
 
     play_audio = function(){
-        var ranran = Math.floor((Math.random() * 2) + 1);
+        var ranran = Math.floor((Math.random() * 5) + 1);
         var audio = new Audio("rich"+ ranran+ ".mp3");
+            audio.play()
+    }
+    play_audio_sad = function(){
+        var ranran = Math.floor((Math.random() * 2) + 1);
+        var audio = new Audio("poor"+ ranran+ ".mp3");
             audio.play()
     }
 
@@ -137,6 +142,8 @@ Tip_app.controller('TravelController', function($scope,$http,$location, LoginFac
         $scope.price.mood = "Bad"
         TipFactory.sadPrice($scope.price, function(output){
             $scope.prices = output
+                        play_audio_sad()
+
         })
     }
 
@@ -160,6 +167,8 @@ Tip_app.controller('TravelController', function($scope,$http,$location, LoginFac
         $scope.price.mood = "Bad"
         TipFactory.sadPrice($scope.price, function(output){
             $scope.prices = output
+                        play_audio_sad()
+
         })
     }
 
@@ -183,6 +192,8 @@ Tip_app.controller('TravelController', function($scope,$http,$location, LoginFac
         $scope.price.mood = "Bad"
         TipFactory.sadPrice($scope.price, function(output){
             $scope.prices = output
+                        play_audio_sad()
+
         })
     }
 
@@ -206,6 +217,8 @@ Tip_app.controller('TravelController', function($scope,$http,$location, LoginFac
         $scope.price.mood = "Bad"
         TipFactory.sadPrice($scope.price, function(output){
             $scope.prices = output
+                        play_audio_sad()
+
         })
     }
 

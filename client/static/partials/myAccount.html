@@ -102,15 +102,16 @@
 					<td ng-bind="tip.location"></td>
 					<td ng-bind="tip.createdAt | date:'MMM dd yyyy h:m:ss a'"></td>
 					<td ng-bind="tip.mood"></td>
-					<td>${{tip.price}}</td>
+					<!-- <td>${{tip.price}}</td> -->
+					<td ng-bind="'$' + tip.price "></td>
 					<td>{{tip.tipPercent | number: 2}}%</td>
-					<td>${{tip.tipAmount | number: 2}}</td>
-					<td>${{tip.total | number: 2}}</td>
+					<td>{{tip.tipAmount | currency: '$'}}</td>
+					<td>{{tip.total | currency: '$'}}</td>
 					<td><a href="" ng-click="remove_Tip(tip)">Remove</a></td>
 
 				</tr>
 			</tbody>
 		</table>
-		<a href="" ng-click="increaseBy(5)">Show More</a> | <a href="" ng-click="decreaseBy(5)">Show Less</a>
+		<a href="" ng-click="displayNum = tips.length">Show All</a> | <a href="" ng-click="increaseBy(5)">Show More</a> | <a href="" ng-click="decreaseBy(5)">Show Less</a>
 	</div>
 </div>
