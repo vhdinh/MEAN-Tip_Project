@@ -72,7 +72,9 @@
 			<input type="text" placeholder="Filter" ng-model="filtering">
 		</form>
 
-		<table class="table table-hover table-border">
+		<a onClick ="$('#historyTable').tableExport({type:'excel',ignoreColumn:'[2,8]',pdfFontSize:7, pdfLeftMargin:10, escape:'false'});" target="_blank">Export Table</a>
+
+		<table class="table table-hover table-border" id="historyTable">
 			<thead>
 				<tr>
 					<th><button ng-click="order('service')">Service</button>
