@@ -80,7 +80,11 @@ Tip_app.controller('LoginController', function($scope,$http,$location, LoginFact
         var audio = new Audio("poor"+ ranran+ ".mp3");
             audio.play()
     }
-
+    play_audio_meh = function(){
+        var ranran = Math.floor((Math.random() * 4) + 1);
+        var audio = new Audio("dontcare"+ ranran+ ".mp3");
+            audio.play()
+    }
 
 
     $scope.happyPrice = function(){
@@ -165,7 +169,7 @@ Tip_app.controller('LoginController', function($scope,$http,$location, LoginFact
         console.log("Total Price", $scope.price)
         TipFactory.dontCare($scope.price, function(output){
             $scope.prices = output
-
+            play_audio_meh()
         })
 
     }

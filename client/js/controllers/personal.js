@@ -24,6 +24,11 @@ Tip_app.controller('PersonalController', function($scope,$http,$location, LoginF
         var audio = new Audio("poor"+ ranran+ ".mp3");
             audio.play()
     }
+    play_audio_meh = function(){
+        var ranran = Math.floor((Math.random() * 4) + 1);
+        var audio = new Audio("dontcare"+ ranran+ ".mp3");
+            audio.play()
+    }
 
 
     $scope.happyPrice_barber = function(){
@@ -295,6 +300,7 @@ Tip_app.controller('PersonalController', function($scope,$http,$location, LoginF
         $scope.price.mood = "Don't Care"
         TipFactory.dontCare($scope.price, function(output){
             $scope.prices = output
+            play_audio_meh()
         })
 
     }
@@ -319,6 +325,7 @@ Tip_app.controller('PersonalController', function($scope,$http,$location, LoginF
         $scope.price.mood = "Don't Care"
         TipFactory.dontCare($scope.price, function(output){
             $scope.prices = output
+            play_audio_meh()
         })
 
     }
@@ -343,6 +350,7 @@ Tip_app.controller('PersonalController', function($scope,$http,$location, LoginF
         $scope.price.mood = "Don't Care"
         TipFactory.dontCare($scope.price, function(output){
             $scope.prices = output
+            play_audio_meh()
         })
 
     }
@@ -366,6 +374,7 @@ Tip_app.controller('PersonalController', function($scope,$http,$location, LoginF
         $scope.price.mood = "Don't Care"
         TipFactory.dontCare($scope.price, function(output){
             $scope.prices = output
+            play_audio_meh()
         })
 
     }
@@ -389,6 +398,7 @@ Tip_app.controller('PersonalController', function($scope,$http,$location, LoginF
         $scope.price.mood = "Don't Care"
         TipFactory.dontCare($scope.price, function(output){
             $scope.prices = output
+            play_audio_meh()
         })
 
     }
