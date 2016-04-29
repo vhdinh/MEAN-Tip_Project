@@ -1,43 +1,36 @@
-Tip_app.factory("LoginFactory", function($http, $location){
+Tip_app.factory("LoginFactory", function($http, $location, $sessionStorage){
 	var factory = {};
 	factory.user = {};
 	var priceOutcome;
+	$sessionStorage.currUser;
 	
 	factory.login = function(info, callback){
 		$http.post('/login', info).success(function(output){
-			console.log("LOGGING IN FACTORY COMING BACK", output)
-			factory.user = output[0];
+			// factory.user = output[0];
+			$sessionStorage.currUser = output[0]
 			console.log("after logging in", output[0])
-			callback(output)
+			callback(output[0])
 		})
 	}
 
-	factory.getUser = function(callback){
-		console.log("GETTTING USER OUTPUT asdfasdfds ")
+	factory.getUser = function(){
+		return $sessionStorage.currUser
+	}
 
-		$http.get('/getuser').success(function(output){
-			console.log("GETTTING USER OUTPUT ", output)
-			user = output
-			callback(user)
-		})
+	factory.getLocation = function(){
+		return $sessionStorage.currLoc
 	}
 
 	factory.logout = function(){
-		$http.get('/logout').success(function(output){
-			console.log("logging out ouptput", output)
-			if(output == "FALSE"){
-				factory.user = {}
-				$location.url('/login')
-			}
-		})
+	$sessionStorage.currUser = null;
+	$location.url('/login')
 	}
 
 	factory.signup = function(info, callback){
-		// console.log("LOIGIN FACTORY signing up - ", info)
 		$http.post('/signup', info).success(function(output){
-			console.log("after singing in - ", output )
-			factory.user = output;
-			callback(factory.user)
+			// factory.user = output;
+			$sessionStorage.currUser = output
+			callback(output)
 		})
 	}
 

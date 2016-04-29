@@ -26,6 +26,7 @@
     "mongoose": "^4.4.13",
     "morgan": "^1.7.0",
     "multer": "^1.1.0",
+    "ng-storage": "^0.3.2",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.0",
     "passport-google-oauth": "^1.0.0",

@@ -1,7 +1,10 @@
 
 Tip_app.controller('UserController', function($scope,$http,$location, $routeParams, LoginFactory,TipFactory) {
     
-    $scope.user = LoginFactory.user
+    $scope.user = LoginFactory.getUser()
+    if(!$scope.user){
+        $location.url('/login')
+    }
 
     $scope.logout = function(){
         LoginFactory.logout()

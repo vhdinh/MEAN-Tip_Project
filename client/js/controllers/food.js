@@ -1,9 +1,10 @@
 Tip_app.controller('FoodController', function($scope,$http,$location, LoginFactory, TipFactory) {
 
-    $scope.user = LoginFactory.user
+    $scope.locate;
 
-    // console.log("LOGIN FACTORY USER", LoginFactory.user)
-    if(!LoginFactory.user){
+
+    $scope.user = LoginFactory.getUser()
+    if(!$scope.user){
         $location.url('/login')
     }
 
@@ -11,13 +12,9 @@ Tip_app.controller('FoodController', function($scope,$http,$location, LoginFacto
     $scope.logout = function(){
         LoginFactory.logout()
     }
-   
-// get location
+   //get location
     $.getJSON("http://ip-api.com/json/?callback=?", function(data) {
-        table_body = "";
-        // console.log("Hi", data)
-        table_body += data.city
-         $scope.locate = data.city
+    $scope.locate = data.city
     })
 
     play_audio = function(){
